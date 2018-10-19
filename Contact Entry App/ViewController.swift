@@ -76,7 +76,12 @@ class ViewController: UIViewController {
     @IBAction func saveButton(_ sender: Any) {
         
         
-        if let text = firstnameField.text, !text.isEmpty
+        if  (firstnameField.text != "" &&
+            lastnameField.text != "" &&
+            companyField.text != "" &&
+            phoneField.text != "" &&
+            emailField.text != "")
+            
         {
             //do something if it's not empty
 
@@ -84,20 +89,23 @@ class ViewController: UIViewController {
             // create the alert
             let alert = UIAlertController(title: "Contact Saved", message: "\(firstnameField.text!) now is a contact!", preferredStyle: UIAlertController.Style.alert)
 
+
             // add an action (button)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
 
-            firstnameField.text = ""
-            lastnameField.text = ""
-            companyField.text = ""
-            phoneField.text = ""
-            emailField.text = ""
-        
             // show the alert
             self.present(alert, animated: true, completion: nil)
+          
+                self.firstnameField.text = "";
+                self.lastnameField.text = "";
+                self.companyField.text = "";
+                self.phoneField.text = "";
+                self.emailField.text = "";
+       
+            
         }
         else {
-            let alert = UIAlertController(title: "Error", message: "Please iput value!\n First name can't be empty!", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Error", message: "Please input value!\n Fields can't be empty!", preferredStyle: UIAlertController.Style.alert)
             
             // add an action (button)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
